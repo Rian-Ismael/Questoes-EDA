@@ -30,7 +30,7 @@ public class CountingSort {
             count[arr[i] - min] += 1;
         }
 
-        for (int i = 1; i < range; i++) {
+        for (int i = 1; i < count.length; i++) {
             count[i] += count[i - 1];
         }
 
