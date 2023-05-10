@@ -1,0 +1,83 @@
+package tstPilha;
+
+import java.util.Scanner;
+
+public class ordenaPilha {
+	private int[] pilha;
+	private int topo;
+	private int size;
+	
+	public ordenaPilha(int size) {
+		this.pilha = new int[size];
+		this.topo = -1;
+		this.size = size;
+	}
+	
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int capacidade = Integer.parseInt(sc.nextLine());
+		
+		int[] valorInt = stringToInt(sc.nextLine().split(" "));
+		
+		ordenaPilha ord = new ordenaPilha(capacidade);
+		
+	}
+	
+	public static int[] stringToInt(String[] valores) {
+		int[] valorInt = new int[valores.length];
+		for(int i = 0; i < valores.length; i++) {
+			valorInt[i] = Integer.parseInt(valores[i]);
+		}
+		
+		return valorInt;
+		
+	}
+	
+	public int getMax(ordenaPilha pilha) {
+		ordenaPilha aux = new ordenaPilha(pilha.size);
+		ordenaPilha ord = new ordenaPilha(pilha.size);
+		
+		int maxi = pilha.peek();
+		while(!pilha.isEmpty()) {
+			aux.push(pilha.pop());
+			
+			if(maxi < pilha.peek()) {
+				maxi = pilha.peek();
+			}
+		}
+		
+		
+		while(!aux.isEmpty()) {
+			pilha.push(aux.pop());
+		}
+		
+		return maxi;
+	}
+	
+	private void push(int element) {
+		if(this.topo < size) {
+			this.pilha[++this.topo] = element;
+		}
+		
+	}
+	
+	public int peek() {
+		return this.pilha[this.topo];
+	}
+
+	public int pop() {
+		Integer result = null;
+		if(!isEmpty()) {
+			result = this.pilha[this.topo--];
+		}
+		
+		return result;
+	}
+	
+	public boolean isEmpty() {
+		return this.topo == -1;
+	}
+
+}
+
