@@ -1,2 +1,2 @@
 # Questoes-EDA
-questões realizadas no tst da disciplina de EDA.
+Questions dealt with in the EDA discipline test.
